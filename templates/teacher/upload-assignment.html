@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block navbar %}
+    {% include "user_navbar.html" %}
+{% endblock %}
+
+{% block body %}
+<div class="container" style="padding: 20px;">
+    <h1 class="text-center" style="padding: 20px;">Upload Assignment</h1>
+    <div class="row d-flex justify-content-center" style="border: 3px solid; border-color: black; width: 70%;margin-left: 20%;">
+        <div class="col-md-4">
+            <form action="{% url 'teacher_upload_assignment' %}" method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                <input type="hidden" value="{{ request.session.teacher_first_name }}" name="teacher_name">
+                <input type="hidden" value="{{ request.session.teacher_id }}" name="teacher_id">
+                <textarea type="text" minlength="7" maxlength="500" name="description" required maxlength="55" placeholder="Description" value="{% if description %}{{ description }}{% endif %}" style="margin-bottom: 20px; width: 100%; margin-top: 5px;"></textarea>
+                <label for="teacher_assignment"style="margin-bottom: 0px; margin-top: 0px;">Select Assignment File:</label>
+                <input type="file" name="assignment" required accept="application/pdf,.pdf" id="teacher_assignment" style="margin-bottom: 20px;">
+                {% if error %}
+                    <br><small style="color: red">{{ error }}</small>
+                {% endif %}
+                <button type="submit" class="btn btn-primary" style="width: 100%; margin-bottom: 3%;">Upload</button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

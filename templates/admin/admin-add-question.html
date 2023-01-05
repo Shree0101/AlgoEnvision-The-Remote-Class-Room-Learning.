@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block navbar %}
+    {% include "user_navbar.html" %}
+{% endblock %}
+{% block body %}
+<div class="container" style="padding: 20px;">
+    <h1 class="text-center" style="padding: 20px;">Add Question</h1>
+    <div class="row d-flex justify-content-center" style="border: 3px solid; border-color: black; width: 70%; margin-left: 20%;">
+        <div class="col-md-4">
+            <form action="{% url 'admin_add_question' %}" method="POST">
+                {% csrf_token %}
+                {% for field in questionForm %}
+                    <div>
+                        <p>{{ field.label }}: <br> {{ field }}</p>
+                    </div>
+                {% endfor %}
+                {% if error %}
+                    <small style="color: red">{{ error }}</small>
+                {% endif %}
+                <button type="submit" class="btn btn-primary" style="width: 100%; margin-bottom: 10px;">Submit</button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

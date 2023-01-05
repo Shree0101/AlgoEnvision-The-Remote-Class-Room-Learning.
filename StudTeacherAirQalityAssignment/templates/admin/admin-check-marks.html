@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block navbar %}
+    {% include "user_navbar.html" %}
+{% endblock %}
+{% block body %}
+    <div class="container" style="padding: 20px;">
+        <h1 class="text-center">Student Result</h1>
+        <div class="row d-flex justify-content-center">
+            <table class="table table-hover table-bordered">
+              <thead>
+                <tr>
+                    <th>Course</th>
+                    <th>Total Marks</th>
+                    <th>Number of Attempt</th>
+                    <th>Exam Date</th>
+                </tr>
+              </thead>
+              {% for t in results %}
+                  <tr>
+                    <td> {{t.exam}}</td>
+                    <td> {{t.marks}}</td>
+                    <td>Attempt {{ forloop.counter }}</td>
+                    <td> {{t.date}}</td>
+                  </tr>
+              {% endfor %}
+            </table>
+        </div>
+    </div>
+{% endblock %}

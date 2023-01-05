@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% block navbar %}
+    {% include "user_navbar.html" %}
+{% endblock %}
+{% block body %}
+    <div class="container" style="padding: 20px;">
+        <h1 class="text-center">List of Students</h1>
+        <div class="row d-flex justify-content-center">
+            <table class="table table-hover table-bordered">
+              <thead>
+                <tr>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Email</th>
+                    <th>Mobile</th>
+                    <th>Update Student Info</th>
+                    <th>Delete Student</th>
+                    <th>Result</th>
+                </tr>
+              </thead>
+              {% for c in students %}
+              <tr>
+                  <td>{{c.first_name}}</td>
+                  <td> {{c.last_name}}</td>
+                  <td> {{c.email}}</td>
+                  <td> {{c.mobile}}</td>
+                  <td><a class="btn btn-warning" style="border-radius: 0%;" href="{% url 'update_student' c.id  %}">Update</a></td>
+                  <td><a class="btn btn-danger" style="border-radius: 30%;" href="{% url 'delete_student' c.id  %}">Delete</a></td>
+                  <td><a class="btn btn-info" style="border-radius: 60%;" href="{% url 'admin_view_marks' c.id  %}">View</a></td>
+              </tr>
+              {% endfor %}
+            </table>
+        </div>
+    </div>
+{% endblock %}

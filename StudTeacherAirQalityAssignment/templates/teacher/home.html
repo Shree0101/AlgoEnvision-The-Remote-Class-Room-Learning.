@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block navbar %}
+    {% include "user_navbar.html" %}
+{% endblock %}
+
+{% block body %}
+<div class="container">
+    <div class="m-4">
+        <div class="row">
+            <div class="col-6">
+                <div class="card border-primary mb-4">
+                    <a href="{% url 'teacher_upload_assignment' %}" style="text-decoration: none;">
+                        <div class="card-body text-primary">
+                            <h5 class="card-title">Assignment Allocation</h5>
+                            <p class="card-text">Upload PDF file here so students can download it.</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="card border-secondary mb-4">
+                    <a href="{% url 'teacher_view_homework' %}" style="text-decoration: none;">
+                        <div class="card-body text-secondary">
+                            <h5 class="card-title">Check Assignments</h5>
+                            <p class="card-text">Click here to check student homework.</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="card border-success mb-4">
+                    <a href="{% url 'discussions' %}" style="text-decoration: none;">
+                        <div class="card-body text-success">
+                            <h5 class="card-title">Discussion forum</h5>
+                            <p class="card-text">Chat room to resolve doubts.</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

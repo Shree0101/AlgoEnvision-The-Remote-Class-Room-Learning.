@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block navbar %}
+    {% include "user_navbar.html" %}
+{% endblock %}
+
+{% block body %}
+<div class="container" style="padding: 20px;">
+    <h1 class="text-center">Upload Homework</h1>
+    <div class="row d-flex justify-content-center">
+        <div class="col-md-4">
+            <form action="{% url 'stud_upload_homework' %}" method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                <input type="hidden" value="{{ request.session.student_id }}" name="student_id">
+                <select class="custom-select" name="subject" required>
+                    <option selected value="">Select Subject</option>
+                    {% for sub in subject_list%}
+                    <option value="{{sub}}">{{sub}}</option>
+                    {% endfor %}
+                </select>
+                <select class="custom-select" name="teacher" required>
+                    <option selected value="">Select Teacher</option>
+                    {% for email in teacher_list%}
+                        <option value="{{email}}">{{email}}</option>
+                    {% endfor %}
+                </select>
+                <label for="stud_homework">Select Homework File:</label>
+                <input type="file" name="assignment" required accept=".doc,.docx,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document" id="stud_homework">
+                <input type="text" name="description" value="{% if description %}{{ description }}{% endif %}" required maxlength="55" placeholder="Description" style="width: 100%">
+                {% if error %}
+                    <br><small style="color: red">{{ error }}</small>
+                {% endif %}
+                <button type="submit" class="btn btn-primary" style="width: 100%">Upload</button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+
+{% block navbar %}
+    {% include "user_navbar.html" %}
+{% endblock %}
+
+{% block body %}
+<div class="container" style="padding: 20px;">
+    <div class="row d-flex justify-content-center">
+        <div class="col-md-4">
+            <form action="{% url 'stud_view_assignment' %}" method="POST">
+                {% csrf_token %}
+                <select class="custom-select" name="subject" required>
+                    <option selected value="">Select Subject</option>
+                    {% for sub in subject_list%}
+                    <option value="{{sub}}">{{sub}}</option>
+                    {% endfor %}
+                </select>
+                <select class="custom-select" name="teacher" required>
+                    <option selected value="">Select Teacher</option>
+                    {% for t in teacher_list%}
+                        <option value="{{t}}">{{t}}</option>
+                    {% endfor %}
+                </select>
+                <button type="submit" class="btn btn-primary" style="width: 100%">View Assignment</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% if assignment_list %}
+    <table class="table table-striped">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Subject</th>
+          <th scope="col">Teacher</th>
+          <th scope="col">Description</th>
+          <th scope="col">Uploaded Date</th>
+          <th scope="col">View/Download</th>
+        </tr>
+      </thead>
+      <tbody>
+          {% for data in assignment_list %}
+            <tr>
+              <th scope="row">{{forloop.counter}}</th>
+              <td>{{data.subject}}</td>
+              <td>{{data.teacher_name}}</td>
+              <td>{{data.description}}</td>
+              <td>{{data.uploaded_at}}</td>
+              <td><a href="{% url 'stud_download_assignment' data.id %}">Link</a></td>
+            </tr>
+          {% empty %}
+            <div class="alert alert-danger" role="alert" style="text-align: center;">
+                <p style="text-align: center;">Select teacher regarding to subject!</p>
+            </div>
+          {%endfor%}
+      </tbody>
+    </table>
+{% else %}
+<div class="alert alert-danger" role="alert">
+  Select subject and teacher!
+</div>
+{% endif %}
+{% endblock %}

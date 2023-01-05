@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block navbar %}
+    {% include "user_navbar.html" %}
+{% endblock %}
+
+{% block body %}
+{% if homework_list %}
+<form action="{% url 'teacher_update_remark' %}" method="POST">
+    {% csrf_token %}
+    <table class="table table-striped">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Student Name</th>
+          <th scope="col">Student Email</th>
+          <th scope="col">Description</th>
+          <th scope="col">Uploaded Date</th>
+          <th scope="col">View/Download</th>
+          <th scope="col">Remark</th>
+          <th scope="col">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+          {% for data in homework_list %}
+            <tr>
+                    <th scope="row">{{forloop.counter}}</th>
+                    <td>{{data.stud_name}}</td>
+                    <td>{{data.stud_email}}</td>
+                    <td>{{data.description}}</td>
+                    <td>{{data.uploaded_at}}</td>
+                    <td><a href="{% url 'teacher_download_homework' data.id %}">Link</a></td>
+                    <td><input type="text" placeholder="Remark" value="{{data.remark}}" name="remark"></td>
+                    <input type="hidden" name="homework_id" value="{{data.id}}">
+                <td><button type="submit" class="btn btn-primary" style="width: 100%">Update Remark</button></td>
+            </tr>
+          {%endfor%}
+      </tbody>
+    </table>
+</form>
+{% else %}
+<div class="alert alert-danger" role="alert">
+  No one submitted homework yet!!!!
+</div>
+{% endif %}
+{% endblock %}

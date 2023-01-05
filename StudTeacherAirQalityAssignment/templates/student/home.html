@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+
+{% block navbar %}
+    {% include "user_navbar.html" %}
+{% endblock %}
+
+{% block body %}
+<div class="container">
+    <div class="m-4">
+        <div class="row">
+            <div class="col-6">
+                <div class="card border-primary mb-4">
+                    <a href="{% url 'stud_view_assignment' %}" style="text-decoration: none;">
+                        <div class="card-body text-primary">
+                            <h5 class="card-title">Download Assignment</h5>
+                            <p class="card-text">Download PDF file. Download homework/assignments/notes, etc</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="card border-secondary mb-4">
+                    <a href="{% url 'stud_upload_homework' %}" style="text-decoration: none;">
+                        <div class="card-body text-secondary">
+                            <h5 class="card-title">Upload Homework</h5>
+                            <p class="card-text">Click here to upload homework. File should be word file</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="card border-success mb-4">
+                    <a href="{% url 'discussions' %}" style="text-decoration: none;">
+                        <div class="card-body text-success">
+                            <h5 class="card-title">Discussion forum</h5>
+                            <p class="card-text">Chat room to resolve doubts.</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="card border-danger mb-4">
+                    <a href="{% url 'course_info' %}" style="text-decoration: none;">
+                        <div class="card-body text-danger">
+                            <h5 class="card-title">Course</h5>
+                            <p class="card-text">Know about python, java and machine learning.</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

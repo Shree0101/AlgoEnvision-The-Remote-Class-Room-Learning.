@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% block navbar %}
+    {% include "user_navbar.html" %}
+{% endblock %}
+{% block body %}
+    <div class="container" style="padding: 20px;">
+        <h1 class="text-center">List of Courses</h1>
+        <div class="row d-flex justify-content-center">
+            <div class="col-md-7">
+                <table class="table table-hover table-bordered" id="dev-table">
+                      <thead>
+                        <tr>
+                          <th>Course</th>
+                          <th>Total Question</th>
+                          <th>Total Marks</th>
+                          <th>Delete Course</th>
+                          <th>View Questions</th>
+                        </tr>
+                      </thead>
+                      {% for t in courses %}
+                      <tr>
+                        <td>{{t.course_name}}</td>
+                        <td>{{t.question_number}}</td>
+                        <td>{{t.total_marks}}</td>
+                        <td><a class="btn btn-danger" style="border-radius: 0%;" href="{% url 'delete_course' t.id  %}">Delete</a></td>
+                        <td><a class="btn btn-danger" style="border-radius: 0%;" href="{% url 'view_question' t.id  %}">View</a></td>
+                      </tr>
+                      {% endfor %}
+                </table>
+            </div>
+        </div>
+    </div>
+{% endblock %}

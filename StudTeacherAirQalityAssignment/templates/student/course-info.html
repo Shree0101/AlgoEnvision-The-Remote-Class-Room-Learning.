@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% block navbar %}
+    {% include "user_navbar.html" %}
+{% endblock %}
+
+{% block body %}
+<div class="container">
+    <div class="m-4">
+        <div class="row">
+            <div class="col-6">
+                <div class="card border-warning mb-4">
+                    <div class="card-body text-warning">
+                        <h5 class="card-title">Java</h5>
+                        <p class="card-text">Java is a high-level, class-based, object-oriented programming language that is designed to have as few implementation dependencies as possible.</p>
+                        <p class="card-text"><b>Designed by:</b> James Gosling
+                        <p class="card-text"><b>First appeared:</b> May 23, 1995</p>
+                        <p class="card-text"><b>Paradigm:</b> Multi-paradigm: generic, object-oriented (class-based), functional, imperative, reflective, concurrent </p>
+                        <p class="card-text"><b><a href="{% url 'start_exam' 1 %}">Attend Aptitude Test</a></b></p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="card border-success mb-4">
+                    <div class="card-body text-success">
+                        <h5 class="card-title">Python</h5>
+                        <p class="card-text">Python is a high-level, general-purpose programming language. Its design philosophy emphasizes code readability with the use of significant indentation.</p>
+                        <p class="card-text"><b>Designed by:</b> Guido van Rossum</p>
+                        <p class="card-text"><b>First appeared:</b> 20 February 1991</p>
+                        <p class="card-text"><b>Paradigm:</b> Multi-paradigm: object-oriented, procedural (imperative), functional, structured, reflective</p>
+                        <p class="card-text"><b><a href="{% url 'start_exam' 2 %}">Attend Aptitude Test</a></b></p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="card border-danger mb-4">
+                    <div class="card-body text-danger">
+                        <h5 class="card-title">Machine Learning</h5>
+                        <p class="card-text">Machine learning is the study of computer algorithms that can improve automatically through experience and by the use of data. It is seen as a part of artificial intelligence.</p>
+                        <p class="card-text"><b>SVM:</b> In machine learning, support-vector machines are supervised learning models with associated learning algorithms that analyze data for classification and regression analysis.</p>
+                        <p class="card-text"><b>ANN:</b> Artificial neural networks, usually simply called neural networks, are computing systems inspired by the biological neural networks that constitute animal brains. An ANN is based on a collection of connected units or nodes called artificial neurons, which loosely model the neurons in a biological brain.</p>
+                        <p class="card-text"><b>KNN:</b> In statistics, the K-Nearest Neighbors algorithm is a non-parametric supervised learning method first developed by Evelyn Fix and Joseph Hodges in 1951, and later expanded by Thomas Cover. It is used for classification and regression. In both cases, the input consists of the k closest training examples in a data set.</p>
+                        <p class="card-text"><b><a href="{% url 'air_quality' %}">Machine Learning Modules</a> </b></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

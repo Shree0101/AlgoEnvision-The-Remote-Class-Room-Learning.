@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block body %}
+{% load static %}
+<!--<div class="container" style="padding: 20px; background-image: url({% static 'images/airicon.png' %});background-size: contain; ">-->
+<div class="container" style="padding: 20px;  ">
+    <h1 class="text-center" style="margin-left: 10%; ">ADMIN LOGIN</h1>
+
+    <div class="row d-flex justify-content-center" style="border:3px solid; border-color: black;width: 70%; margin-left: 20%;background-color: #556789;">
+        <div class="col-md-4" style="margin-right: 18%; margin-top: 5px; ">
+            <form action="{% url 'admin_login' %}" method="POST">
+                {% csrf_token %}
+                {% for field in form %}
+                    <div>
+                        <p><b>{{ field.label }}: <br> {{ field }}</b></p>
+
+                    </div>
+                {% endfor %}
+                {% if error %}
+                    <small style="color: red">{{ error }}</small>
+                {% endif %}
+                <button type="submit" class="btn btn-primary" style="width: 100%;margin: 5px; border-radius: 12px; margin-left: 25%;">Login</button>
+                <a class="btn btn-success" href="{% url 'admin_register' %}" style="width: 100%;margin: 5px; border-radius: 12px; margin-left: 25%;  margin-bottom: 10%;">Register</a>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,81 @@
+{% extends 'base.html' %}
+
+{% block navbar %}
+    {% include "user_navbar.html" %}
+{% endblock %}
+
+{% block body %}
+<div class="container">
+    <div class="m-4">
+        <div class="row">
+            <div class="col-3">
+                <div class="card border-primary mb-4">
+                    <a href="#" style="text-decoration: none;">
+                        <div class="card-body text-primary">
+                            <h5 class="card-title">Total Teachers</h5>
+                            <h2 class="card-text text-right">{{total_teacher}}</h2>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="col-3">
+                <div class="card border-secondary mb-4">
+                    <a href="{% url 'admin_view_course' %}" style="text-decoration: none;">
+                        <div class="card-body text-secondary">
+                            <h5 class="card-title">Total Courses</h5>
+                            <h2 class="card-text text-right">{{total_course}}</h2>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="col-3">
+                <div class="card border-success mb-4">
+                    <a href="#" style="text-decoration: none;">
+                        <div class="card-body text-success">
+                            <h5 class="card-title">Registered Student</h5>
+                            <h2 class="card-text text-right">{{total_student}}</h2>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="col-3">
+                <div class="card border-danger mb-4">
+                    <a href="#" style="text-decoration: none;">
+                        <div class="card-body text-danger">
+                            <h5 class="card-title">Available Questions</h5>
+                            <h2 class="card-text text-right">{{total_question}}</h2>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="col-4">
+                <div class="card border-warning mb-4">
+                    <a href="{% url 'admin_add_course' %}" style="text-decoration: none;">
+                        <div class="card-body text-warning">
+                            <h5 class="card-title text-center">Add New Course</h5>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="col-4">
+                <div class="card border-dark mb-4">
+                    <a href="{% url 'admin_add_question' %}" style="text-decoration: none;">
+                        <div class="card-body text-dark">
+                            <h5 class="card-title text-center">Add New Questions</h5>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="col-4">
+                <div class="card border-info mb-4">
+                    <a href="{% url 'admin_view_student' %}" style="text-decoration: none;">
+                        <div class="card-body text-info">
+                            <h5 class="card-title text-center">View Student Result</h5>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
